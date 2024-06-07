@@ -6,7 +6,7 @@ import win32com.client as win32  # 한/글 열기 위한 모듈
 
 def hwp_find_replace(find_string, replace_string):  # 한/글 찾아바꾸기 함수(녹화한 스크립트임)
     hwp.Run("MoveSelNextWord")
-    hwp.HAction.GetDefault("ExecReplace", hwp.HParameterSet.HFindReplace.HSet)  # 한글 특성상 부득이하게 두번 실행
+    hwp.HAction.GetDefault("ExecReplace", hwp.HParameterSet.HFindReplace.HSet)  # 한/글 특성상 부득이하게 두번 실행
     hwp.HParameterSet.HFindReplace.Direction = hwp.FindDir("Forward")
     hwp.HParameterSet.HFindReplace.FindString = find_string
     hwp.HParameterSet.HFindReplace.ReplaceString = replace_string
@@ -42,16 +42,16 @@ def hwp_reindex(hwp):  # 번호 재정렬하는 메인함수
         if text[0] == 1:  # 종료 코드인 1이 발생하면
             break  # while문도 종료
         else:  # 그 전까지는
-            if re.match(r"^제\d+조\(?", text[1]) and text[1].startswith(f"제{조항번호}조("):
+            if re.match(r"^제\d+조\ ?", text[1]) and text[1].startswith(f"제{조항번호}조 "):
                 # 문단이 "제?조("로 시작하면서, 조항번호가 올바르게 들어가 있는 경우조항순서==인덱스)
                 조항번호 += 1  # 인덱스만 하나 올리고 넘어감(문서는 바뀌지 않음)
                 continue
-            elif re.match(r"^제\d+조\(?", text[1]) and not text[1].startswith(f"제{조항번호}조("):
+            elif re.match(r"^제\d+조\ ?", text[1]) and not text[1].startswith(f"제{조항번호}조 "):
                 # 문단이 "제?조("로 시작하는데, 조항번호가 올바르지 않은 경우(조항순서가 인덱스와 다름)
                 hwp.MovePos(201)  # moveScanPos : GetText() 로 탐색중인 현재 위치로 이동
                 hwp.HAction.Run("MoveLineBegin")  # 해당라인 앞으로 이동(이 라인은 없어도 무관하나 모니터링을 위해 추가함. 
                 # MovePos(201)만 실행하면 해당 캐럿으로 이동하지 않음)
-                hwp_find_replace(re.match(r"^제\d+조\(?", text[1]).group(0), f"제{조항번호}조(")
+                hwp_find_replace(re.match(r"^제\d+조\ ?", text[1]).group(0), f"제{조항번호}조 ")
                 # 위에서 정의한 찾아바꾸기 함수로 "제?조(" 안의 ?를 올바른 번호로 대체함
                 조항번호 = 1  # 조항번호를 1로 바꾸고
                 hwp.InitScan()  # 검색을 다시 실행함(왜? 문자열 변동이 생기면 검색 강제종료됨)
