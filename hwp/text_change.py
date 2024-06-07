@@ -25,7 +25,7 @@ def hwp_find_replace(find_string, replace_string):  # 한/글 찾아바꾸기 �
     hwp.Run("Cancel")
 
 
-def hwp_init(filename):  # 한/글 여는 코드
+def hwp_init(filename):  # 한/글 여는 함수
     hwp = win32.gencache.EnsureDispatch("HWPFrame.HwpObject")  # 아래아한글 열고
     hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModule")  # 보안모듈 불러오고(파일 열거나 저장, 이미지 불러올 때 보안팝업이 뜨지 않음)
     hwp.Open(filename)  # 해당문서 열기
