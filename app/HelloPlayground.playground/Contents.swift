@@ -1,9 +1,8 @@
 import UIKit
 
-var greeting = "Hello, Swift!!!"
-print(greeting)
-print(greeting)
+var name = "Swift"
+var thisYear = 2023
+var valid = true
 
-dump(greeting)
-
+let num: Int = 123
 
