@@ -1,7 +1,7 @@
 from tkinter import Tk  # GUI 띄우는 창
 from tkinter.filedialog import askopenfilename  # HWP파일 선택하기 위한 다이얼로그창
 import re  # 정규표현식
-import win32com.client as win32  # 한/글 열기 위한 모듈
+import win32com.client as win32  # type: ignore # 한/글 열기 위한 모듈
 
 def hwp_find_replace(find_string, replace_string):  # 한/글 찾아바꾸기 함수(녹화한 스크립트임)
     hwp.Run("MoveSelNextWord")
