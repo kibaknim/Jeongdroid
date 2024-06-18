@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>lightSlider Demo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="http://madalla.kr/script/slide5/css/lightslider.css" />
+    <style>
+        ul {
+            list-style: none outside none;
+            padding-left: 0;
+            margin: 0;
+
+        }
+
+        .demo .item {
+            margin-bottom: 60px;
+
+        }
+
+        .content-slider li {
+            background-color: #ed3020;
+            text-align: center;
+            color: #FFF;
+
+        }
+
+        .content-slider h3 {
+            margin: 0;
+            padding: 70px;
+        }
+
+        .demo {
+            width: auto;
+            object-fit: contain;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://madalla.kr/script/slide5/js/lightslider.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#content-slider").lightSlider({
+                loop: true,
+                keyPress: true
+            });
+            $('#image-gallery').lightSlider({
+                gallery: true,
+                item: 1,
+                thumbItem: 8,
+                slideMargin: 1,
+                speed: 2500,
+                auto: true,
+                loop: true,
+                pause: 5000,
+                adaptiveHeight: true,
+
+                onSliderLoad: function () {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <center>
+        <div class="demo">
+            <div class="item">
+                <div class="clearfix" style="max-width:70%;">
+                    <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                        <li data-thumb="/web/gallery_image/photo_01.jpg">
+                            <img src="/web/gallery_image/photo_01.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                        <li data-thumb="/web/gallery_image/photo_02.jpg">
+                            <img src="/web/gallery_image/photo_02.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                        <li data-thumb="/web/gallery_image/photo_03.jpg">
+                            <img src="/web/gallery_image/photo_03.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                        <li data-thumb="/web/gallery_image/photo_04.jpg">
+                            <img src="/web/gallery_image/photo_04.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                        <li data-thumb="/web/gallery_image/photo_05.jpg">
+                            <img src="/web/gallery_image/photo_05.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                        <li data-thumb="/web/gallery_image/photo_06.jpg">
+                            <img src="/web/gallery_image/photo_06.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                        <li data-thumb="/web/gallery_image/photo_07.jpg">
+                            <img src="/web/gallery_image/photo_07.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                        <li data-thumb="/web/gallery_image/photo_08.jpg">
+                            <img src="/web/gallery_image/photo_08.jpg" , style="max-width: 100%; height: auto;" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+</body>
